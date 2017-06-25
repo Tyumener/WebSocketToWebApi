@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Websockettorest.DataAccess
 {
-    public class Context : IContext
+    public class IContext
     {
-        
+        public IList<Event> Events { get; } = new List<Event>();
     }
 }

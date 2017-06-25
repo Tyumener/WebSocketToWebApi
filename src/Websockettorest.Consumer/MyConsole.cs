@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Websockettorest.Consumer
+﻿namespace Websockettorest.Consumer
 {
+    using System;
+
     public class MyConsole : IConsole
     {
         public void WriteLine(string value)

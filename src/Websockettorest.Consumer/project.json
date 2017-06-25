@@ -5,12 +5,17 @@
   },
 
   "dependencies": {
-    "PhoenixSocket": "1.0.0",
-    "WebSocketSharp": "1.0.3-rc11"
+    "Newtonsoft.Json": "10.0.3",
+    "Websockettorest.DataAccess": "1.0.0-*"
   },
 
   "frameworks": {
     "net452": {
+      "dependencies": {
+        "Phoenix": {
+          "target": "project"
+        }
+      }
     }
   }
 }

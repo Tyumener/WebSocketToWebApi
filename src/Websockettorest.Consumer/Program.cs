@@ -1,9 +1,6 @@
 ﻿namespace Websockettorest.Consumer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using DataAccess;
 
     public class Program
     {
@@ -11,7 +8,7 @@
         {
             var host = "wss://machinestream.herokuapp.com/api/v1/events";
             var channelName = "events";
-            var consumer = new Consumer(host, channelName, new MyConsole());
+            var consumer = new Consumer(host, channelName, new MyConsole(), new Context());
             consumer.Run();
         }
     }

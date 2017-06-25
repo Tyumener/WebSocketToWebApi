@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Websockettorest.DataAccess
+﻿namespace Websockettorest.DataAccess
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;    
+    
     public enum EventStatus
-    {
+    {        
         Idle,
         Running,
         Finished,

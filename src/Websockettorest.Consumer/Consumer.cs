@@ -1,42 +1,46 @@
 ﻿namespace Websockettorest.Consumer
 {
+    using DataAccess;
     using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using Newtonsoft.Json.Linq;
+    using Phoenix;
 
     public class Consumer
     {
         private string host;
         private string channelName;
         private IConsole console;
+        private IContext context;
 
-        public Consumer(string host, string channelName, IConsole console)
+        public Consumer(string host, string channelName, IConsole console, IContext context)
         {
             this.host = host;
             this.channelName = channelName;
             this.console = console;
+            this.context = context;
         }
 
         public void Run()
-        {
-            var socket = new PhoenixSocket.Socket(this.host,
-                logger: (kind, msg, data) => this.console.WriteLine($"{kind}: {msg}, \n" + JsonConvert.SerializeObject(data)));
-
+        {            
+            // Socket does not implement IDisposable, otherwise I'd have used using here.
+            var socket = new Socket(this.host, new SocketOptions() { LogCallback = Logger });
             socket.Connect();
-
-            var channel = socket.Channel(this.channelName);            
-            channel.On("new_msg", msg =>
-            {
-                this.console.WriteLine("New message: " + JsonConvert.SerializeObject(msg));
-            });
+            var channel = socket.Channel(this.channelName, null);
+            channel.On("new", (jo, x) => SaveEvent(jo));
             channel.Join();
-            
-            this.console.ReadLine();       
+            this.console.ReadLine();
+            socket.Disconnect();
+        }        
 
-            channel.Leave();
-            socket.Disconnect(null);
+        private void Logger(string kind, string msg, JObject data = null)
+        {
+            this.console.WriteLine($"{kind} - {msg}");
+        }
+
+        private void SaveEvent(JObject jo)
+        {
+            var e = jo.ToObject<Event>();
+            this.context.Events.Add(e);
         }
     }
 }
