@@ -1,44 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Websockettorest.Webapi.Controllers
+﻿namespace Websockettorest.Webapi.Controllers
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
+    using DataAccess;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+
     [Route("api/[controller]")]
     public class EventsController : Controller
     {
+        private Context context; 
+
+        public EventsController(Context context)
+        {
+            this.context = context;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var events = await this.context.Events.ToListAsync();
+            return this.Ok(events);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(string id)
         {
-            return "value";
-        }
+            var requestedEvent = await this.context.Events.SingleOrDefaultAsync(e => e.Id == id);
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+            if (requestedEvent == null) return this.NotFound();
+                        
+            return this.Ok(requestedEvent);
+        }        
     }
 }
