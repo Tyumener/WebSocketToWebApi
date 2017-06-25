@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
-
-namespace Websockettorest.Webapi
+﻿namespace Websockettorest.Webapi
 {
+    using System.IO;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Builder;
+
     public class Program
     {
         public static void Main(string[] args)

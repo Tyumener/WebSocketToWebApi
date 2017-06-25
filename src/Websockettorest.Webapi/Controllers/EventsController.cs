@@ -5,6 +5,7 @@
     using DataAccess;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
+    using System.Linq;
 
     [Route("api/[controller]")]
     public class EventsController : Controller
@@ -16,15 +17,16 @@
             this.context = context;
         }
 
-        // GET api/values
+        // Also custom sorting and paging might be added here, but for that it would be
+        // necessary to create a separate resource for storing data snapshots
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var events = await this.context.Events.ToListAsync();
+            var events = await this.context.Events.OrderByDescending(e => e.Timestamp).ToListAsync();
+            
             return this.Ok(events);
         }
-
-        // GET api/values/5
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
