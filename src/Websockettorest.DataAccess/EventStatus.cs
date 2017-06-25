@@ -5,6 +5,7 @@
         Idle,
         Running,
         Finished,
-        Errorred
+        Errored,
+        Repaired
     }
 }

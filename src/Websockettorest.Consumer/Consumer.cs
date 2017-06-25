@@ -1,6 +1,7 @@
 ﻿namespace Websockettorest.Consumer
 {
     using DataAccess;
+    using Microsoft.EntityFrameworkCore;
     using Newtonsoft.Json.Linq;
     using Phoenix;
 
@@ -9,9 +10,9 @@
         private string host;
         private string channelName;
         private IConsole console;
-        private IContext context;
+        private Context context;
 
-        public Consumer(string host, string channelName, IConsole console, IContext context)
+        public Consumer(string host, string channelName, IConsole console, Context context)
         {
             this.host = host;
             this.channelName = channelName;
@@ -36,10 +37,11 @@
             this.console.WriteLine($"{kind} - {msg}");
         }
 
-        private void SaveEvent(JObject jo)
+        private async void SaveEvent(JObject jo)
         {
             var e = jo.ToObject<Event>();
             this.context.Events.Add(e);
+            await this.context.SaveChangesAsync();
         }
     }
 }

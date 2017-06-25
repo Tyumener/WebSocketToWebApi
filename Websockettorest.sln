@@ -16,6 +16,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Websockettorest.DataAccess"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phoenix", "src\dn-phoenix\Phoenix.csproj", "{C91F8990-22EF-4CE0-978B-1F13E965417D}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Websockettorest.Webapi", "src\Websockettorest.Webapi\Websockettorest.Webapi.xproj", "{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{C91F8990-22EF-4CE0-978B-1F13E965417D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C91F8990-22EF-4CE0-978B-1F13E965417D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C91F8990-22EF-4CE0-978B-1F13E965417D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 		{3A89AF36-285C-4346-B014-8C8FAB8CCF16} = {1E2C2F69-A923-4D48-A450-23D523A7F6E4}
 		{04FA7BDF-DD0B-4352-B892-2E04C768B626} = {1E2C2F69-A923-4D48-A450-23D523A7F6E4}
 		{C91F8990-22EF-4CE0-978B-1F13E965417D} = {1E2C2F69-A923-4D48-A450-23D523A7F6E4}
+		{D3A84B35-BD56-4E81-B6E9-F9EF3F73FC41} = {1E2C2F69-A923-4D48-A450-23D523A7F6E4}
 	EndGlobalSection
 EndGlobal
