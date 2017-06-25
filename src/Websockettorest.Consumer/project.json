@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "PhoenixSocket": "1.0.0",
+    "WebSocketSharp": "1.0.3-rc11"
+  },
+
+  "frameworks": {
+    "net452": {
+    }
+  }
+}
