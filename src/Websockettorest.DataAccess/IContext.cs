@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Websockettorest.DataAccess
+﻿namespace Websockettorest.DataAccess
 {
+    using System.Collections.Generic;
+
     public class IContext
     {
         public IList<Event> Events { get; } = new List<Event>();

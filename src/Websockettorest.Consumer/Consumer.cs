@@ -1,7 +1,6 @@
 ﻿namespace Websockettorest.Consumer
 {
     using DataAccess;
-    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using Phoenix;
 
